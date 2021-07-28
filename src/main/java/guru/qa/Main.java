@@ -1,17 +1,30 @@
 package guru.qa;
 
+import guru.qa.data.Card;
+import guru.qa.data.MasterCard;
+import guru.qa.data.UnionPayCard;
+import guru.qa.data.VisaCard;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static guru.qa.data.Country.RU;
+
 public class Main {
 
     public static void main(String[] args) {
-        Car vw = new Car("White", 'b', 249);
-        Car audi = new Car();
-        vw.color = "White";
+        invoke(new UnionPayCard());
+        List<String> aList = new ArrayList<>();
 
-        vw.setPower(249);
-        audi.setPower(200);
-
-        Car.sayCreationDateForAllCars();
-
-        System.out.println(audi.getColor());
     }
+
+
+
+    public static void invoke(Card card) {
+        card.setBalance(100);
+        card.payInCountry(RU, 75);
+        System.out.println("Current balance: " + card.getBalance());
+    }
+
+
 }
